@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+option java_multiple_files = true;
+option java_package = "primeToPrimeStubs";
+
+package primeToPrimeService; // package do proto
+
+// serviço com operações sobre números
+service PrimeToPrimeService {
+  //Server register
+  rpc nextServer(stream RingMessage) returns ( google.protobuf.Empty);
+}
+
+message RingMessage {
+  int64 primeNumber = 1;
+  bool isPrime = 2;
+  bool isDone = 3;
+  string requestId = 4;
+}
+

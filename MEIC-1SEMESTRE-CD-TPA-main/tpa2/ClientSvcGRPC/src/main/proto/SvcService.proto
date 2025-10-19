@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "svcstubs";
+
+package svcservice; // package do proto
+
+// serviço com operações para upload e donwload de imagens com marcações
+service SvcService {
+  //Para upload das imagens, utiliza-se stream de cliente para envio da image em blocos de bytes
+  //Escreve no espaço partilhado, os bytes da imagem à medida que recebe
+  //Devolve o identificador da imagem,para download futuro
+  rpc uploadImage(stream ImageBlock) returns (ImageId);
+  //Para download das imagens, utiliza-se stream de servidor, para o envio da imagem em blocos de bytes
+  // Recebe-se a imagem em blocos de bytes, de forma a não exceder o uso da memória do processo
+  rpc downloadImage(ImageId) returns (stream ImageBlock);
+}
+
+message ImageBlock {
+    oneof Options{ //Pode ser um dos dois
+      bytes block = 1; //Blocks de 1024 para não encher a memória durante o processamento
+      ImageData data = 2;
+      string message = 3; //Utilizado caso seja necessário informar estado do pedido (ex: imagem não pronta)
+    }
+}
+
+message ImageData {
+  string filename = 1;
+  repeated string tags = 2; //Lista de tags
+}
+
+message ImageId {
+  string id = 1;
+}

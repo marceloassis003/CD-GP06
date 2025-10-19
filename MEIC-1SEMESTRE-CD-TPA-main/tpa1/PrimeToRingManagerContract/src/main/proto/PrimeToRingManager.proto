@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "primeToRingStubs";
+
+package primeToRingService; // package do proto
+
+// serviço com operações sobre números
+service PrimeToRingService {
+    //Server register
+    rpc registServer(PrimeRegistInfo) returns (stream PrimeInfo);
+}
+
+
+message  PrimeRegistInfo{
+  string ip = 1;
+  int32 port = 2;
+}
+
+message PrimeInfo{
+  string uid = 1;
+  PrimeRegistInfo serverInfo = 2;
+}
+
+
