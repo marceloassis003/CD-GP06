@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "clientToImageStubs";
+
+package clientToImageService; // package do proto
+
+// serviço com operações sobre números
+service ClientToImageserver{
+  rpc ImageProcessing(stream Image) returns (ImgID);
+
+  rpc DownloadImage(ImgID) returns (stream Image);
+
+}
+
+message Image{
+  oneof Options {
+    bytes block = 1;
+    DataImage data = 2;
+    string message = 3;
+  }
+}
+
+message DataImage {
+  string filename = 1;
+}
+
+message ImgID {
+  string id = 1;
+}
