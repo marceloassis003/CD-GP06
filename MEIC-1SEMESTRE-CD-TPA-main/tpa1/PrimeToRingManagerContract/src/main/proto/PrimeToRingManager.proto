@@ -8,7 +8,7 @@ package primeToRingService; // package do proto
 // serviço com operações sobre números
 service PrimeToRingService {
     //Server register
-    rpc registServer(PrimeRegistInfo) returns (stream PrimeInfo);
+    rpc registServer(PrimeRegistInfo) returns (PrimeInfo);
 }
 
 
@@ -19,7 +19,7 @@ message  PrimeRegistInfo{
 
 message PrimeInfo{
   string uid = 1;
-  PrimeRegistInfo serverInfo = 2;
+  //PrimeRegistInfo serverInfo = 2;
 }
 
 
