@@ -1,3 +1,3 @@
-# projero TPA1 
+# Computação Distribuida - Trabalho Prático de Avaliação (TPA1)
 
-# Esta pasta será onde será criado todo o projeto. 
+## Esta pasta será onde será criado todo o projeto. 
