@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ImageServerStubs";
+option java_outer_classname = "ManagerServiceProto";
+
+package managerservice;
+
+//package
+service MngToClient
+{
+  //GetServer
+  rpc registServer(ImageRegistInfo) returns (ImageInfo);
+}
+
+message ImageRegistInfo
+{
+  string ip = 1;
+  int32 port = 2;
+}
+
+message ImageInfo
+{
+  string uid = 1;
+}
+
