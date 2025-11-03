@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+option java_outer_classname = "ClientToManagerProto";
+
+
+
+package ClientToManager;
+
+service ManagerService {
+  rpc GetServer (google.protobuf.Empty) returns (ImgServInfo);
+}
+
+
+message ImgRegist {
+  string ip = 1;
+  int32 port = 2;
+
+}
+
+message ImgServInfo {
+  string uid = 1;
+  ImgRegist serverInfo = 2;
+
+}
+
