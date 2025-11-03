@@ -30,6 +30,11 @@ public final class ClientToImageServerProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_clientToImageService_ImgID_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_clientToImageService_StatusInfo_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_clientToImageService_StatusInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -44,13 +49,18 @@ public final class ClientToImageServerProto {
       "\001(\0132\037.clientToImageService.DataImageH\000\022\021" +
       "\n\007message\030\003 \001(\tH\000B\t\n\007Options\"\035\n\tDataImag" +
       "e\022\020\n\010filename\030\001 \001(\t\"\023\n\005ImgID\022\n\n\002id\030\001 \001(\t" +
-      "2\261\001\n\023ClientToImageserver\022M\n\017ImageProcess" +
-      "ing\022\033.clientToImageService.Image\032\033.clien" +
-      "tToImageService.ImgID(\001\022K\n\rDownloadImage" +
-      "\022\033.clientToImageService.ImgID\032\033.clientTo" +
-      "ImageService.Image0\001B7\n\031clientToImageSer" +
-      "viceStubsB\030ClientToImageServerProtoP\001b\006p" +
-      "roto3"
+      "\"\177\n\nStatusInfo\022\n\n\002id\030\001 \001(\t\022\016\n\006status\030\002 \001" +
+      "(\t\022\020\n\010filename\030\003 \001(\t\022\022\n\ninput_path\030\004 \001(\t" +
+      "\022\023\n\013output_path\030\005 \001(\t\022\014\n\004host\030\006 \001(\t\022\014\n\004p" +
+      "ort\030\007 \001(\t2\201\002\n\023ClientToImageserver\022M\n\017ima" +
+      "geProcessing\022\033.clientToImageService.Imag" +
+      "e\032\033.clientToImageService.ImgID(\001\022K\n\rDown" +
+      "loadImage\022\033.clientToImageService.ImgID\032\033" +
+      ".clientToImageService.Image0\001\022N\n\rConsult" +
+      "Status\022\033.clientToImageService.ImgID\032 .cl" +
+      "ientToImageService.StatusInfoB7\n\031clientT" +
+      "oImageServiceStubsB\030ClientToImageServerP" +
+      "rotoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -74,6 +84,12 @@ public final class ClientToImageServerProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_clientToImageService_ImgID_descriptor,
         new java.lang.String[] { "Id", });
+    internal_static_clientToImageService_StatusInfo_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_clientToImageService_StatusInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_clientToImageService_StatusInfo_descriptor,
+        new java.lang.String[] { "Id", "Status", "Filename", "InputPath", "OutputPath", "Host", "Port", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

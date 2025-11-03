@@ -19,7 +19,7 @@ public final class ClientToImageserverGrpc {
       clientToImageServiceStubs.ImgID> getImageProcessingMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ImageProcessing",
+      fullMethodName = SERVICE_NAME + '/' + "imageProcessing",
       requestType = clientToImageServiceStubs.Image.class,
       responseType = clientToImageServiceStubs.ImgID.class,
       methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
@@ -32,13 +32,13 @@ public final class ClientToImageserverGrpc {
           ClientToImageserverGrpc.getImageProcessingMethod = getImageProcessingMethod =
               io.grpc.MethodDescriptor.<clientToImageServiceStubs.Image, clientToImageServiceStubs.ImgID>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ImageProcessing"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "imageProcessing"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   clientToImageServiceStubs.Image.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   clientToImageServiceStubs.ImgID.getDefaultInstance()))
-              .setSchemaDescriptor(new ClientToImageserverMethodDescriptorSupplier("ImageProcessing"))
+              .setSchemaDescriptor(new ClientToImageserverMethodDescriptorSupplier("imageProcessing"))
               .build();
         }
       }
@@ -75,6 +75,37 @@ public final class ClientToImageserverGrpc {
       }
     }
     return getDownloadImageMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<clientToImageServiceStubs.ImgID,
+      clientToImageServiceStubs.StatusInfo> getConsultStatusMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ConsultStatus",
+      requestType = clientToImageServiceStubs.ImgID.class,
+      responseType = clientToImageServiceStubs.StatusInfo.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<clientToImageServiceStubs.ImgID,
+      clientToImageServiceStubs.StatusInfo> getConsultStatusMethod() {
+    io.grpc.MethodDescriptor<clientToImageServiceStubs.ImgID, clientToImageServiceStubs.StatusInfo> getConsultStatusMethod;
+    if ((getConsultStatusMethod = ClientToImageserverGrpc.getConsultStatusMethod) == null) {
+      synchronized (ClientToImageserverGrpc.class) {
+        if ((getConsultStatusMethod = ClientToImageserverGrpc.getConsultStatusMethod) == null) {
+          ClientToImageserverGrpc.getConsultStatusMethod = getConsultStatusMethod =
+              io.grpc.MethodDescriptor.<clientToImageServiceStubs.ImgID, clientToImageServiceStubs.StatusInfo>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ConsultStatus"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  clientToImageServiceStubs.ImgID.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  clientToImageServiceStubs.StatusInfo.getDefaultInstance()))
+              .setSchemaDescriptor(new ClientToImageserverMethodDescriptorSupplier("ConsultStatus"))
+              .build();
+        }
+      }
+    }
+    return getConsultStatusMethod;
   }
 
   /**
@@ -156,6 +187,13 @@ public final class ClientToImageserverGrpc {
         io.grpc.stub.StreamObserver<clientToImageServiceStubs.Image> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDownloadImageMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void consultStatus(clientToImageServiceStubs.ImgID request,
+        io.grpc.stub.StreamObserver<clientToImageServiceStubs.StatusInfo> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getConsultStatusMethod(), responseObserver);
+    }
   }
 
   /**
@@ -206,6 +244,14 @@ public final class ClientToImageserverGrpc {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getDownloadImageMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void consultStatus(clientToImageServiceStubs.ImgID request,
+        io.grpc.stub.StreamObserver<clientToImageServiceStubs.StatusInfo> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getConsultStatusMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -244,6 +290,13 @@ public final class ClientToImageserverGrpc {
       return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
           getChannel(), getDownloadImageMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public clientToImageServiceStubs.StatusInfo consultStatus(clientToImageServiceStubs.ImgID request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getConsultStatusMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -272,6 +325,13 @@ public final class ClientToImageserverGrpc {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getDownloadImageMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public clientToImageServiceStubs.StatusInfo consultStatus(clientToImageServiceStubs.ImgID request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getConsultStatusMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -292,10 +352,19 @@ public final class ClientToImageserverGrpc {
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new ClientToImageserverFutureStub(channel, callOptions);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<clientToImageServiceStubs.StatusInfo> consultStatus(
+        clientToImageServiceStubs.ImgID request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getConsultStatusMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_DOWNLOAD_IMAGE = 0;
-  private static final int METHODID_IMAGE_PROCESSING = 1;
+  private static final int METHODID_CONSULT_STATUS = 1;
+  private static final int METHODID_IMAGE_PROCESSING = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -317,6 +386,10 @@ public final class ClientToImageserverGrpc {
         case METHODID_DOWNLOAD_IMAGE:
           serviceImpl.downloadImage((clientToImageServiceStubs.ImgID) request,
               (io.grpc.stub.StreamObserver<clientToImageServiceStubs.Image>) responseObserver);
+          break;
+        case METHODID_CONSULT_STATUS:
+          serviceImpl.consultStatus((clientToImageServiceStubs.ImgID) request,
+              (io.grpc.stub.StreamObserver<clientToImageServiceStubs.StatusInfo>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -353,6 +426,13 @@ public final class ClientToImageserverGrpc {
               clientToImageServiceStubs.ImgID,
               clientToImageServiceStubs.Image>(
                 service, METHODID_DOWNLOAD_IMAGE)))
+        .addMethod(
+          getConsultStatusMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              clientToImageServiceStubs.ImgID,
+              clientToImageServiceStubs.StatusInfo>(
+                service, METHODID_CONSULT_STATUS)))
         .build();
   }
 
@@ -403,6 +483,7 @@ public final class ClientToImageserverGrpc {
               .setSchemaDescriptor(new ClientToImageserverFileDescriptorSupplier())
               .addMethod(getImageProcessingMethod())
               .addMethod(getDownloadImageMethod())
+              .addMethod(getConsultStatusMethod())
               .build();
         }
       }

@@ -9,9 +9,11 @@ package clientToImageService; // package do proto
 
 // serviço com operações sobre números
 service ClientToImageserver{
-  rpc ImageProcessing(stream Image) returns (ImgID);
+  rpc imageProcessing(stream Image) returns (ImgID);
 
   rpc DownloadImage(ImgID) returns (stream Image);
+
+  rpc ConsultStatus(ImgID) returns (StatusInfo);
 
 }
 
@@ -29,4 +31,14 @@ message DataImage {
 
 message ImgID {
   string id = 1;
+}
+
+message StatusInfo {
+  string id = 1;
+  string status = 2;
+  string filename = 3;
+  string input_path = 4;
+  string output_path = 5;
+  string host = 6;
+  string port = 7;
 }
