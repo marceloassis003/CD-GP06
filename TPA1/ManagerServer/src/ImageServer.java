@@ -1,7 +1,7 @@
 package managersvapp;
 import io.grpc.stub.StreamObserver;
 
-// import primeToRingStubs.PrimeInfo;
+// import primeToRingStubs.ImageInfo;
 class ImgContainer
 {
     public String ip;
@@ -10,10 +10,10 @@ class ImgContainer
     public int clients = 0;
     public StreamObserver<ImageSVInfo> responseObserver;
 
-    public PrimeContainer(PrimeInfo primeInfo, StreamObserver<PrimeInfo> responseObserver) {
-        this.ip = primeInfo.getServerInfo().getIp();
-        this.port = primeInfo.getServerInfo().getPort();
-        this.uId = primeInfo.getUid();
+    public PrimeContainer(ImageInfo imgInfo, StreamObserver<ImageInfo> responseObserver) {
+        this.ip = imgInfo.getServerInfo().getIp();
+        this.port = imgInfo.getServerInfo().getPort();
+        this.uId = imgInfo.getUid();
         this.responseObserver = responseObserver;
     }
 }
