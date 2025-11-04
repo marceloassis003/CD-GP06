@@ -15,23 +15,23 @@ public class ImageServerHandler extends ImageToManagerServiceGrpc.ImageToManager
 
     @Override
     public void imageServer(ImageRegistInfo request, StreamObserver<ImageInfo> responseObserver) {
-        System.out.println("[ManagerServer] Novo pedido de registo de ImgServer:");
+        System.out.println("[ManagerServer] New request of registration in a ImgServer:");
         System.out.println("   -> IP: " + request.getIp());
-        System.out.println("   -> Porto: " + request.getPort());
+        System.out.println("   -> Port: " + request.getPort());
 
         UUID uuid = UUID.randomUUID();
 
-        // Cria objeto de resposta
+        // Creates a new object for response
         ImageInfo newImageSV = ImageInfo.newBuilder()
                 .setServerInfo(request)
                 .setUid(uuid.toString())
                 .setRedisPort(redisPort)
                 .build();
 
-        //Last prime references this new Prime Server
+        //Last image references this new ImageServer
         if (!images.isEmpty()){
             System.out.println("Updating existing Image Servers with this new");
-            images.get(images.size() - 1).responseObserver.onNext(newPrime);
+            images.get(images.size() - 1).responseObserver.onNext(newImageSV);
         }
 
         responseObserver.onNext(newImageSV);
