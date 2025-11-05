@@ -122,13 +122,11 @@ public class  ImageHandler extends ClientToImageserverGrpc.ClientToImageserverIm
                     CreateContainerResponse container = docker.createContainerCmd("m4rcelo0571/worker-resize:v2")
                             .withName("worker_"+ imgID)
                             .withHostConfig(hostConfig)
-                            .withCmd(imgID, "host.docker.internal", "6379")
+                                .withCmd(imgID, "host.docker.internal", "6379")
                             .exec();
 
                     docker.startContainerCmd(container.getId()).exec();
                     System.out.println("Container worker launched with ID: " + container.getId());
-
-
 
                     // deliver ID to client
                     ImgID response =
