@@ -27,7 +27,7 @@ public class ManagerServer
         try
         {
             if (args.length > 0) svcPort = Integer.parseInt(args[0]);
-            if (args.length > 1) svcPort = Integer.parseInt(args[1]);
+            if (args.length > 1) svcPort = Integer.parseInt(args[1]); //bug: svcPort X -> redisPort
 
             // connect Redis Global (in host)
             String redisHost = "localhost";
