@@ -29,7 +29,7 @@ public class ClientHandler extends ClientToManagerServiceGrpc.ClientToManagerSer
     @Override
     public void getServer(Empty request, StreamObserver<ImageInfo> responseObserver) {
         try {
-            Set<String> Keys = redis.hkeys("Server:");
+            Set<String> Keys = redis.hkeys("Server:"); //redis.hkey("SERVER:*")...
             if (Keys.isEmpty()) {
                 System.out.println("Manager not have image server avaliable yet.....");
                 responseObserver.onError(
